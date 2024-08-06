@@ -1,6 +1,20 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #696565;
+    color: #5e5a5a;
+}
+
 .container {
-    width: 25vw; /* 50% of viewport width */
-    height: 50vh; /* 50% of viewport height */
+    width: 500px; /* Fixed width */
+    height: 500px; /* Fixed height */
     background-color: white; /* White background for the box */
     display: flex;
     flex-direction: column;
@@ -13,23 +27,14 @@
 .input-container {
     display: flex;
     gap: 10px; /* Space between the input and button */
-    margin-bottom: 20px;
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #696565;
-    color: #5e5a5a;
-    height: 100vh;
-    margin: 0; /* Remove default margin */
+    margin-bottom: 30px;
 }
 
 input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 150px; /* Fixed width for input field */
 }
 
 input[type="button"] {
@@ -45,9 +50,13 @@ input[type="button"]:hover {
     background-color: #0056b3;
 }
 
-#output{
-    color:black;
+#output {
+    color: black;
+    white-space: pre; /* Preserve whitespace and line breaks */
+    font-family: "Courier New", monospace; /* Ensure monospaced font */
 }
-h1{
-    color:black;
+
+h1 {
+    color: black;
+    margin-bottom: 30px; /* Remove default margin */
 }
