@@ -15,7 +15,7 @@ function calculateFees() {
 	if (x < 2000000) {
 		let monthlyFee = x / 1200;
 		totalFee = monthlyFee;
-		result += "Up to 2M:".padEnd(column1Width) + "".padEnd(column2Width) + monthlyFee.toFixed(2).padStart(column3Width) + "\n";
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + monthlyFee.toFixed(2).padStart(column3Width) + "\n";
 	} else if (x < 10000000) {
 		let monthlyFee = (x * 0.004) / 12;
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + "1,000.00".padStart(column3Width) + "\n";
