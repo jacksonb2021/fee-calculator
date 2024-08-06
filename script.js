@@ -2,7 +2,7 @@ function calculateFees() {
 	// Get the value from the input field and convert it to a float
 	let x = parseFloat(document.getElementById("assets").value);
 	let result = ""; // String to accumulate all lines
-	let totalFee = 0;
+	let totalFee;
 	let retainer = 1000;
 	let tenM = 3333.33;
 	let twentyM = 2500;
