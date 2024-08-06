@@ -14,7 +14,7 @@ body {
 
 .container {
     width: 500px; /* Fixed width */
-    height: 500px; /* Fixed height */
+    height: 330px; /* Fixed height */
     background-color: white; /* White background for the box */
     display: flex;
     flex-direction: column;
