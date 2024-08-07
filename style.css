@@ -10,6 +10,7 @@ body {
     justify-content: center;
     background-color: #696565;
     color: #5e5a5a;
+    position:relative;
 }
 
 .container {
@@ -59,4 +60,13 @@ input[type="button"]:hover {
 h1 {
     color: black;
     margin-bottom: 30px; /* Remove default margin */
+}
+
+#logo{
+    max-height: 100px;
+    position:absolute;
+    top:0;
+    left:0;
+    margin:10px;
+
 }
