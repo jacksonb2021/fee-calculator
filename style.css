@@ -6,6 +6,7 @@ html, body {
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #696565;
@@ -13,6 +14,17 @@ body {
     position:relative;
 }
 
+.link{
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+.disclosures{
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: rgba(223, 223, 223, 0.66);
+}
 .container {
     width: 520px; /* Fixed width */
     height: 350px; /* Fixed height */
