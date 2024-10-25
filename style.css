@@ -27,7 +27,7 @@ body {
 }
 .container {
     width: 520px; /* Fixed width */
-    height: 350px; /* Fixed height */
+    height: 375px; /* Fixed height */
     background-color: white; /* White background for the box */
     display: flex;
     flex-direction: column;
