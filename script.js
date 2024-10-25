@@ -23,23 +23,26 @@ function calculateFees() {
 	if (x < 2000000) {
 		let monthlyFee = x / 1200;
 		totalFee = monthlyFee;
-		result += "Assets up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
 		effectiveRate = .0833;
 		effectiveRateAnnual = 1;
 	} else if (x < 10000000) {
 		let monthlyFee = (x * 0.004) / 12;
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Assets 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
+		result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
 		totalFee = retainer + monthlyFee;
 	} else if (x < 20000000) {
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
+		result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
 		let monthlyFee = ((x - 10000000) * 0.003) / 12;
 		result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
 		totalFee = retainer + tenM + monthlyFee;
 	} else {
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
+		result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
 		result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(twentyM).padStart(column3Width) + "\n";
 		let monthlyFee = ((x - 20000000) * 0.0025) / 12;
 		result += "Above 20M:".padEnd(column1Width) + ".0208%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";

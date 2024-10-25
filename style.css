@@ -67,6 +67,7 @@ input[type="button"]:hover {
     color: black;
     white-space: pre; /* Preserve whitespace and line breaks */
     font-family: "Courier New", monospace; /* Ensure monospaced font */
+    line-height: 20px;
 }
 
 h1 {
