@@ -1,6 +1,5 @@
 function calculateFees() {
 	let x = parseFloat(document.getElementById('assets').value.replaceAll(",", ''));
-	// let x = parseFloat(document.getElementById("assets").value);
 	let totalFee;
 	let retainer = 1000;
 	let tenM = 3333.33;
@@ -14,8 +13,7 @@ function calculateFees() {
 		currency: 'USD',
 	});
 
-	// Define column widths
-	const column1Width = 25; // Increased width for better spacing
+	const column1Width = 25;
 	const column2Width = 10;
 	const column3Width = 13;
 	let result = "Total Assets:".padEnd(column1Width) + "".padEnd(column2Width) + y.padStart(column3Width) + "\n\n"; // String to accumulate all lines
@@ -26,24 +24,25 @@ function calculateFees() {
 		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
 		effectiveRate = .0833;
 		effectiveRateAnnual = 1;
-	} else if (x < 10000000) {
-		let monthlyFee = (x * 0.004) / 12;
-		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
-		totalFee = retainer + monthlyFee;
-	} else if (x < 20000000) {
-		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
-		let monthlyFee = ((x - 10000000) * 0.003) / 12;
-		result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
-		totalFee = retainer + tenM + monthlyFee;
 	} else {
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
-		result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(twentyM).padStart(column3Width) + "\n";
-		let monthlyFee = ((x - 20000000) * 0.0025) / 12;
-		result += "Above 20M:".padEnd(column1Width) + ".0208%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
-		totalFee = retainer + tenM + twentyM + monthlyFee;
+		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
+		if (x < 10000000) {
+			let monthlyFee = (x * 0.004) / 12;
+			result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+			totalFee = retainer + monthlyFee;
+		} else if (x < 20000000) {
+			result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
+			let monthlyFee = ((x - 10000000) * 0.003) / 12;
+			result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+			totalFee = retainer + tenM + monthlyFee;
+		} else {
+			result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(tenM).padStart(column3Width) + "\n";
+			result += "From 10M to 20M:".padEnd(column1Width) + ".0250%".padEnd(column2Width) + formatted.format(twentyM).padStart(column3Width) + "\n";
+			let monthlyFee = ((x - 20000000) * 0.0025) / 12;
+			result += "Above 20M:".padEnd(column1Width) + ".0208%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+			totalFee = retainer + tenM + twentyM + monthlyFee;
+		}
 	}
 	if (effectiveRate === -1) {
 		effectiveRate = totalFee / x * 100;
@@ -55,16 +54,16 @@ function calculateFees() {
 	result += "Monthly Fee:".padEnd(column1Width) + `${effectiveRate.toFixed(4)}%`.padEnd(column2Width) + formatted.format(totalFee).padStart(column3Width) + "\n";
 	result += "Annual Fee:".padEnd(column1Width) + `${effectiveRateAnnual.toFixed(4)}%`.padEnd(column2Width) + formatted.format(totalFee * 12).padStart(column3Width) + "\n";
 
-	// Output the result to the document
 	let outputDiv = document.getElementById("output");
-	outputDiv.style.fontFamily = "Courier New, monospace"; // Ensure monospaced font
-	outputDiv.style.whiteSpace = "pre"; // Preserve whitespace and line breaks
+	// outputDiv.style.fontFamily = "Courier New, monospace";
+	// outputDiv.style.whiteSpace = "pre";
 	outputDiv.innerText = result;
 }
 
 let button = document.getElementById("calculate");
 button.addEventListener("click", calculateFees);
 
+//adds commas while typing input numbers
 document.getElementById("assets").addEventListener('input', (e)=>{
 	let value = e.target.value;
 	value = value.replace(/[^0-9.]/g, '');
