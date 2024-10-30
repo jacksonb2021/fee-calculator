@@ -12,18 +12,22 @@ body {
     background-color: #696565;
     color: #5e5a5a;
     position:relative;
+    margin:0 -1em;
 }
 
 .link{
     justify-content: center;
     align-items: center;
     position:relative;
+    color:white;
 }
 .disclosures{
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 15px;
     color: rgba(223, 223, 223, 0.66);
+    width:520px;
+    font-weight:bold;
 }
 .container {
     width: 520px; /* Fixed width */
@@ -39,7 +43,7 @@ body {
 
 .input-container {
     display: flex;
-    gap: 10px; /* Space between the input and button */
+    gap: 10px;
     margin-bottom: 30px;
 }
 
@@ -82,8 +86,4 @@ h1 {
     left:0;
     margin:10px;
 
-}
-a{
-    color:white;
-    align-items: center;
 }
