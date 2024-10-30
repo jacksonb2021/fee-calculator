@@ -21,12 +21,12 @@ function calculateFees() {
 	if (x < 2000000) {
 		let monthlyFee = x / 1200;
 		totalFee = monthlyFee;
-		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
+		result += "Up to $1,999,999:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
 		effectiveRate = .0833;
 		effectiveRateAnnual = 1;
 	} else {
 		result += "Retainer:".padEnd(column1Width) + "".padEnd(column2Width) + formatted.format(retainer).padStart(column3Width) + "\n";
-		result += "Up to 2M:".padEnd(column1Width) + ".0833%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
+		result += "Up to $1,999,999:".padEnd(column1Width) + "0%".padEnd(column2Width) + formatted.format(0).padStart(column3Width) + "\n";
 		if (x < 10000000) {
 			let monthlyFee = (x * 0.004) / 12;
 			result += "From 2M to 10M:".padEnd(column1Width) + ".0333%".padEnd(column2Width) + formatted.format(monthlyFee).padStart(column3Width) + "\n";
